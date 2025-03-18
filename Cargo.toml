@@ -1,9 +1,9 @@
 [package]
-name = "zshrcer"
+name = "shrcer"
 version = "0.1.0"
 edition = "2021"
-description = "A tool to generate .zshrc files from TOML configuration"
-authors = ["zshrcer"]
+description = "A tool to generate .zshrc/.fishrc files from TOML configuration"
+authors = ["shrcer"]
 
 [dependencies]
 toml = "0.8.8"

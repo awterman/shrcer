@@ -1,6 +1,6 @@
 # ZSH Options module
 [[modules]]
-code = """
+zsh_code = """
 # ZSH Options
 setopt appendhistory
 setopt hist_ignore_all_dups
@@ -8,7 +8,7 @@ setopt hist_ignore_all_dups
 
 # Source files module
 [[modules]]
-code = """
+zsh_code = """
 # Source secret files
 [ -f ~/.zsh_secret ] && source ~/.zsh_secret
 [ -f $HOME/.local/bin/env ] && source $HOME/.local/bin/env
@@ -48,20 +48,25 @@ plugins = [
 
 # Tool configurations
 [tools.cargo]
-if-file = "~/.cargo/env"
-commands = ['source ~/.cargo/env']
+if_file = "~/.cargo/env"
+zsh_code = "source ~/.cargo/env"
+fish_code = "source ~/.cargo/env"
 
 [tools.starship]
-if-cmd = "starship"
-commands = ['source <(starship init zsh --print-full-init)']
-fish-commands = ['source <(starship init fish --print-full-init)']
+if_cmd = "starship"
+zsh_code = "source <(starship init zsh --print-full-init)"
+fish_code = "starship init fish --print-full-init | source"
 
 [tools.zoxide]
-if-cmd = "zoxide"
-commands = ['eval "$(zoxide init zsh)"']
-fish-commands = ['eval "$(zoxide init fish)"']
+if_cmd = "zoxide"
+zsh_code = "eval \"$(zoxide init zsh)\""
+fish_code = "zoxide init fish | source"
 
 [tools.mcfly]
-if-cmd = "mcfly"
-commands = ['eval "$(mcfly init zsh)"']
-fish-commands = ['eval "$(mcfly init fish)"']
+if_cmd = "mcfly"
+zsh_code = "eval \"$(mcfly init zsh)\""
+fish_code = "mcfly init fish | source"
+
+[tools.pnpm]
+exports = { PNPM_HOME = "$HOME/.local/share/pnpm" }
+path = { prepend = ["$HOME/.local/share/pnpm/bin"] }
