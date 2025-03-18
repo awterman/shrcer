@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2021"
 description = "A tool to generate .zshrc/.fishrc files from TOML configuration"
 authors = ["shrcer"]
+license = "MIT"
+repository = "https://github.com/user/shrcer"
+readme = "README.md"
 
 [dependencies]
 toml = "0.8.8"
