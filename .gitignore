@@ -1,0 +1,17 @@
+# Rust build artifacts
+/target
+**/*.rs.bk
+Cargo.lock
+
+# Generated zshrc files
+*zshrc*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db

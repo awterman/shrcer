@@ -1,0 +1,67 @@
+# ZSH Options module
+[[modules]]
+code = """
+# ZSH Options
+setopt appendhistory
+setopt hist_ignore_all_dups
+"""
+
+# Source files module
+[[modules]]
+code = """
+# Source secret files
+[ -f ~/.zsh_secret ] && source ~/.zsh_secret
+[ -f $HOME/.local/bin/env ] && source $HOME/.local/bin/env
+"""
+
+# Environment variables
+[exports]
+EDITOR = "nvim"
+HISTFILE = "~/.zsh_history"
+HISTSIZE = "10000"
+SAVEHIST = "10000"
+
+# Path configuration
+[path]
+prepend = ["$HOME/.local/bin"]
+
+# Aliases
+[aliases]
+cd = { cmd = "z", if = "zoxide" }
+ls = { cmd = "eza --group-directories-first --icons=auto", if = "eza" }
+
+[znap]
+custom_path = "$HOME/code/zsh/znap/znap.zsh"
+
+# Plugins module
+[[modules]]
+plugins = [
+    "marlonrichert/zsh-autocomplete",
+    "zsh-users/zsh-autosuggestions",
+    "zsh-users/zsh-syntax-highlighting",
+    "zsh-users/zsh-completions",
+    "conda-incubator/conda-zsh-completion",
+    "zpm-zsh/clipboard",
+    "ChrisPenner/copy-pasta",
+    "gko/ssh-connect",
+]
+
+# Tool configurations
+[tools.cargo]
+if-file = "~/.cargo/env"
+commands = ['source ~/.cargo/env']
+
+[tools.starship]
+if-cmd = "starship"
+commands = ['source <(starship init zsh --print-full-init)']
+fish-commands = ['source <(starship init fish --print-full-init)']
+
+[tools.zoxide]
+if-cmd = "zoxide"
+commands = ['eval "$(zoxide init zsh)"']
+fish-commands = ['eval "$(zoxide init fish)"']
+
+[tools.mcfly]
+if-cmd = "mcfly"
+commands = ['eval "$(mcfly init zsh)"']
+fish-commands = ['eval "$(mcfly init fish)"']
