@@ -1,4 +1,4 @@
-h# shrcer
+# shrcer
 
 A config-based generator for shell configuration files (.zshrc, .fishrc) from a TOML configuration.
 
